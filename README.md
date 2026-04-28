@@ -1,4 +1,4 @@
-# aimetamere
+# Nicolas de Haan
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aimetamere/aimetamere/output/github-snake-dark.svg" />
