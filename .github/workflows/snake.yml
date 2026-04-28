@@ -21,6 +21,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Zoom snake SVGs (1.5x)
+        run: |
+          node <<'EOF'
+          const fs = require("fs");
+
+          const files = ["dist/github-snake.svg", "dist/github-snake-dark.svg"];
+          const zoom = 1.5;
+
+          for (const file of files) {
+            let svg = fs.readFileSync(file, "utf8");
+            const match = svg.match(/viewBox="([^"]+)"/);
+            if (!match) continue;
+
+            const [minX, minY, width, height] = match[1].split(/\s+/).map(Number);
+            const newWidth = width / zoom;
+            const newHeight = height / zoom;
+            const newMinX = minX + (width - newWidth) / 2;
+            const newMinY = minY + (height - newHeight) / 2;
+            const newViewBox = `${newMinX} ${newMinY} ${newWidth} ${newHeight}`;
+
+            svg = svg.replace(/viewBox="[^"]+"/, `viewBox="${newViewBox}"`);
+            fs.writeFileSync(file, svg, "utf8");
+          }
+          EOF
+
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output
