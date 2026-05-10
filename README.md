@@ -5,3 +5,5 @@
     <img alt="github-snake" src="https://raw.githubusercontent.com/aimetamere/aimetamere/output/github-snake.svg" width="100%" />
   </picture>
 </p>
+
+# Full-stack web designer. 
