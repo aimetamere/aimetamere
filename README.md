@@ -6,4 +6,3 @@
   </picture>
 </p>
 
-# Full-stack web designer. 
